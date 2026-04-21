@@ -18,13 +18,15 @@
    are in stdin. A word is a sequence of non-whitespace characters.
    Whitespace is defined by the isspace() function. Return 0. */
 
-;enum {FALSE, TRUE}
-.equ FALSE, 0
-.equ TRUE, 1
-.equ EOF, -1
+.section .rodata
+    fmt: .asciz "%7ld %7ld %7ld\n"
 
 .section ".text"
 .global main
+
+.equ FALSE, 0
+.equ TRUE, 1
+.equ EOF, -1
 
 main:
 
@@ -111,40 +113,20 @@ endloop1:
 
 endif3:
 
+    adr x0, fmt
+
+    adr x1, lLineCount
+    ldr x1, [x1] ; load lLineCount
+
+    adr x2, lWordCount
+    ldr x2, [x2] ; load lWordCount
+
+    adr x3, lCharCount
+    ldr x3, [x3] ; load lCharCount
+
+    bl printf ; printf("%7ld %7ld %7ld\n", lLineCount, lWordCount, lCharCount)
+
     mov w0, 0
     ldr x30, [sp]
     add sp, sp, 16
     ret
-
-
-/*
-    if (!isspace(iChar)) goto else1;
-        if (!iInWord) goto endif1;
-            lWordCount++;
-            iInWord = FALSE;
-        endif1;
-        goto endif2;
-    else1;
-        if (!iInWord) goto endif3;
-            iInWord = TRUE;
-        endif3;
-    endif2;
-
-    if (!(iChar == '\n')) goto endif4;
-        lLineCount++;
-    endif4;
-
-    b loop1
-endloop1:
-
-   if (iInWord) goto endif5;
-      lWordCount++;
-    endif5;
-*/
-//implemented up to here
-
-   printf("%7ld %7ld %7ld\n", lLineCount, lWordCount, lCharCount);
-   return 0;
-// }
-
-
