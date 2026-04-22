@@ -118,9 +118,9 @@ mywc002.txt: normal file with no '\n' on the second line. Tests the program's
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,
 2e, and 2f to compute fib(500000) on armlab? Fill in the blanks.
 
-Part 2a:  _____ seconds
+Part 2a:  13.087087 seconds
 
-Part 2b:  _____ seconds
+Part 2b:  5.187187 seconds
 
 Part 2d:  _____ seconds
 

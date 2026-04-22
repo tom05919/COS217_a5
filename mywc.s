@@ -41,7 +41,7 @@ loop1:
     str w1, [x0] /* iChar = getchar() */
 
     cmn w1, #1 /* !((iChar = getchar()) != EOF) */
-    beq endloop1 /* goto endloop1
+    beq endloop1 /* goto endloop1 */
 
     adr x0, lCharCount
     ldr x2, [x0] /* lCharCount */
