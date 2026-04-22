@@ -30,47 +30,42 @@
 
 main:
 
-; int main(void)
-; {
-;loop1:
-    ;if (!((iChar = getchar()) != EOF)) goto endloop1
-
     sub sp, sp, 16
     str x30, [sp]
 
 loop1:
-    bl getchar ; getchar()
+    bl getchar /* getchar() */
 
     mov w1, w0 
     adr x0, iChar
-    str w1, [x0] ; iChar = getchar()
+    str w1, [x0] /* iChar = getchar() */
 
-    cmn w1, #1 ; !((iChar = getchar()) != EOF)
-    beq endloop1 ; goto endloop1
+    cmn w1, #1 /* !((iChar = getchar()) != EOF) */
+    beq endloop1 /* goto endloop1
 
     adr x0, lCharCount
-    ldr x2, [x0] ; lCharCount
+    ldr x2, [x0] /* lCharCount */
     add x2, x2, 1 
-    str x2, [x0] ; lCharCount++
+    str x2, [x0] /* lCharCount++ */
 
     mov w0, w1
-    bl isspace ;isspace(iChar)
+    bl isspace /* isspace(iChar) */
 
-    cbz w0, else1 ;if (!isspace(iChar)) goto else1
+    cbz w0, else1 /* if (!isspace(iChar)) goto else1 */
 
     adr x0, iInWord
     ldr w4, [x0]
     cmp w4, FALSE
-    beq endif1 ;if (!iInWord) goto endif1
+    beq endif1 /* if (!iInWord) goto endif1 */
 
     adr x0, lWordCount
-    ldr x5, [x0] ; lWordCount
+    ldr x5, [x0] /* lWordCount */
     add x5, x5, 1
-    str x5, [x0] ;lWordCount++
+    str x5, [x0] /* lWordCount++ */
 
     mov w4, FALSE 
     adr x0, iInWord
-    str w4, [x0] ; iInWord = FALSE
+    str w4, [x0] /* iInWord = FALSE */
 
     b endif1
 
@@ -78,23 +73,23 @@ else1:
     adr x0, iInWord
     ldr w4, [x0]
     cmp w4, FALSE
-    bne endif1 ;if (!iInWord) goto endif1;
+    bne endif1 /* if (!iInWord) goto endif1; */
 
     mov w4, TRUE 
     adr x0, iInWord
-    str w4, [x0] ; iInWord = TRUE
+    str w4, [x0] /* iInWord = TRUE */
 
 endif1:
 
     adr x0, iChar
     ldr w1, [x0]
     cmp w1, '\n'
-    bne endif2 ; if (!(iChar == '\n')) goto endif2
+    bne endif2 /* if (!(iChar == '\n')) goto endif2 */
 
     adr x0, lLineCount
-    ldr x3, [x0] ; lLineCount
+    ldr x3, [x0] /* lLineCount */
     add x3, x3, 1
-    str x3, [x0] ; lLineCount++;
+    str x3, [x0] /* lLineCount++  */
 
 endif2: 
     
@@ -104,27 +99,27 @@ endloop1:
     adr x0, iInWord
     ldr w4, [x0]
     cmp w4, TRUE
-    bne endif3 ; if (iInWord) goto endif3;
+    bne endif3 /* if (iInWord) goto endif3 */
 
     adr x0, lWordCount
-    ldr x5, [x0] ; lWordCount
+    ldr x5, [x0] /* lWordCount */
     add x5, x5, 1
-    str x5, [x0] ; lWordCount++
+    str x5, [x0] /* lWordCount++ */
 
 endif3:
 
     adr x0, fmt
 
     adr x1, lLineCount
-    ldr x1, [x1] ; load lLineCount
+    ldr x1, [x1] /* load lLineCount */
 
     adr x2, lWordCount
-    ldr x2, [x2] ; load lWordCount
+    ldr x2, [x2] /* load lWordCount */
 
     adr x3, lCharCount
-    ldr x3, [x3] ; load lCharCount
+    ldr x3, [x3] /* load lCharCount */
 
-    bl printf ; printf("%7ld %7ld %7ld\n", lLineCount, lWordCount, lCharCount)
+    bl printf /* printf("%7ld %7ld %7ld\n", lLineCount, lWordCount, lCharCount) */
 
     mov w0, 0
     ldr x30, [sp]

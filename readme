@@ -106,7 +106,13 @@ particular, what bugs are in your submission?
 ------------------------------------------------------------------------
 What is your mywc program test plan?
 
+mywc001.txt: words with increasing spaces between them one th first line 
+             and decreasing spaces on the second line. Tests the ability 
+             of the prorgam to handle consecutive spaces without messing up
+             word count
 
+mywc002.txt: normal file with no '\n' on the second line. Tests the program's
+             ability to count new line characters
 
 ------------------------------------------------------------------------
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,
