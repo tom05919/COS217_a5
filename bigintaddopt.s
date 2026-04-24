@@ -154,3 +154,11 @@ finish:
    ldp x19, x20, [sp], 16
 
    ret
+
+	.unreq OADDEND1
+   .unreq OADDEND2
+	.unreq OSUM
+   .unreq LSUM_LENGTH
+   .unreq LINDEX
+   .unreq ULCARRY
+   .unreq ULSUM
