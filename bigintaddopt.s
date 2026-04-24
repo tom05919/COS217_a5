@@ -41,9 +41,9 @@ endif0:
    overflow occurred, and 1 (TRUE) otherwise. */
 
 .global BigInt_add
-0ADDEND1 .req x19
-0ADDEND2 .req x20
-0SUM .req x21
+OADDEND1 .req x19
+OADDEND2 .req x20
+OSUM .req x21
 LSUM_LENGTH .req x22
 LINDEX      .req x23
 ULCARRY     .req x24
