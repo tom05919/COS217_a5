@@ -64,41 +64,8 @@ larger_endif:
 /*--------------------------------------------------------------------*/
 /* Assign the sum of oAddend1 and oAddend2 to oSum.  oSum should be
    distinct from oAddend1 and oAddend2.  Return 0 (FALSE) if an
-   overflow occurred, and 1 (TRUE) otherwise. 
-
-; int BigInt_add(BigInt_T oAddend1, BigInt_T oAddend2, BigInt_T oSum)
-; {
-;    unsigned long ulCarry;
-;    unsigned long ulSum;
-;    long lIndex;
-;    long lSumLength;
-
-;    /* Determine the larger length. */
-;    lSumLength = BigInt_larger(oAddend1->lLength, oAddend2->lLength);
-
-;    /* Clear oSum's array if necessary. */
-;    if (oSum->lLength > lSumLength)
-;       memset(oSum->aulDigits, 0, MAX_DIGITS * sizeof(unsigned long));
-
-   ; /* Perform the addition. */
-   ; ulCarry = 0;
-   ; for (lIndex = 0; lIndex < lSumLength; lIndex++)
-   ; {
-   ;    ulSum = ulCarry;
-   ;    ulCarry = 0;
-
-   ;    ulSum += oAddend1->aulDigits[lIndex];
-   ;    if (ulSum < oAddend1->aulDigits[lIndex]) /* Check for overflow. */
-   ;       ulCarry = 1;
-
-   ;    ulSum += oAddend2->aulDigits[lIndex];
-   ;    if (ulSum < oAddend2->aulDigits[lIndex]) /* Check for overflow. */
-   ;       ulCarry = 1;
-
-   ;    oSum->aulDigits[lIndex] = ulSum;
-   ; }
-*/
-
+   overflow occurred, and 1 (TRUE) otherwise. */ 
+   
 .global BigInt_add
 BigInt_add:
     sub sp, sp, ADD_FRAME
