@@ -13,29 +13,6 @@
 
 /*--------------------------------------------------------------------*/
 
-/* Return the larger of lLength1 and lLength2. USELESS TO KEEP SINCE WE INLINED IT BUT FIGURED ID KEEP IT*/
-BigInt_larger:
-   sub sp, sp, 32
-   
-   /* if (lLength1 > lLength2) */
-   cmp x0, x1
-   ble else1
-
-   /* lLarger = lLength1 */
-   str x0, [sp, 24]
-   b endif0
-
-else1:
-   /* lLarger = lLength2 */
-   str x1, [sp, 24]
-
-endif0:
-   ldr x0, [sp, 24] 
-   add sp, sp, 32
-   ret
-
-/*--------------------------------------------------------------------*/
-
 /* Assign the sum of oAddend1 and oAddend2 to oSum.  oSum should be
    distinct from oAddend1 and oAddend2.  Return 0 (FALSE) if an
    overflow occurred, and 1 (TRUE) otherwise. */
