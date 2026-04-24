@@ -154,29 +154,15 @@ endif5:
    add x2, x2, 8
    
    mov x4, 1
-   str x4, [x2, x6, lsl 3]
-
-   add x3, x3, 1
+   str x4, [x2, x6, lsl 3] /* oSum->aulDigits[lSumLength] = 1 */
+ 
+   add x3, x3, 1 /* lSumLength++ */
 endif4:
 
-   ldr x2, [sp, 32]
+   ldr x2, [sp, 32] /* oSum->lLength = lSumLength */
    str x3, [x2]
 
    mov x0, TRUE
-   
-   /* Check for a carry out of the last "column" of the addition. */
-   if (ulCarry == 1)
-   {
-      if (lSumLength == MAX_DIGITS)
-         return FALSE;
-      oSum->aulDigits[lSumLength] = 1;
-      lSumLength++;
-   }
-
-   /* Set the length of the sum. */
-   oSum->lLength = lSumLength;
-
-   return TRUE;
 
 finish:
    ldr x30, [sp]
