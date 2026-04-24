@@ -18,13 +18,13 @@ BigInt_larger:
 
    /* lLarger = lLength1 */
    str x0, [sp, 24]
-   b endif1
+   b endif0
 
 else1:
    /* lLarger = lLength2 */
    str x1, [sp, 24]
 
-endif1:
+endif0:
    ldr x0, [sp, 24] 
    add sp, sp, 32
    ret
@@ -113,7 +113,7 @@ endloop1:
    cmp x3, MAX_DIGITS
    bne endif5
 
-   move x0, FALSE
+   mov x0, FALSE
    b finish
 
 endif5:
