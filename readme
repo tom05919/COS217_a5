@@ -106,13 +106,31 @@ particular, what bugs are in your submission?
 ------------------------------------------------------------------------
 What is your mywc program test plan?
 
-mywc001.txt: words with increasing spaces between them one th first line 
-             and decreasing spaces on the second line. Tests the ability 
-             of the prorgam to handle consecutive spaces without messing up
-             word count
+Boundary tests:
 
-mywc002.txt: normal file with no '\n' on the second line. Tests the program's
-             ability to count new line characters
+mywc003.txt: This file contains only whitespace (spaces, tabs, and newlines), and so it checks the boundary case where there are characters and lines but zero words.
+
+mywc004.txt: This file contains one word and no trailing newline, and so it checks the boundary case where EOF happens while still inside a word.
+
+mywc002.txt: This file has a final line that does not end with '\n', and so it checks the boundary between line counting and character counting at end-of-file.
+
+Statement tests:
+
+mywc003.txt: This file contains only whitespace, and so causes the computer to execute lines 30-36, 42, 48-50, and 55-56 of the given mywc.c.
+
+mywc001.txt: This file contains words separated by different amounts of spaces, and so causes the computer to execute lines 30-40, 42-50, and 55-56 of the given mywc.c.
+
+mywc004.txt: This file contains one non-whitespace token with no trailing newline, and so causes the computer to execute lines 30-33, 34, 42-46, 52-53, and 55-56 of the given mywc.c.
+
+mywc002.txt: This file contains words across two lines where the second line has no newline terminator, and so causes the computer to execute lines 30-50, 52-53, and 55-56 of the given mywc.c.
+
+mywc005.txt: This file contains punctuation with mixed whitespace separators (including tabs), and so causes the computer to execute lines 30-50 and 55-56 of the given mywc.c while confirming punctuation is treated as part of words.
+
+Stress tests:
+
+mywc006.txt: This file contains very long words/lines, and so stress tests repeated character counting and memory-safe iteration over long input lines.
+
+mywc007.txt: This file contains many repeated lines with many words per line, and so stress tests loop behavior over larger total input size and frequent word transitions.
 
 ------------------------------------------------------------------------
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,

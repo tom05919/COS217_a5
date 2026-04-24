@@ -29,7 +29,7 @@
 .equ EOF, -1
 
 main:
-
+    /* allocates space on the stack */
     sub sp, sp, 16
     str x30, [sp]
 
