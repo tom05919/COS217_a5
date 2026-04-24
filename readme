@@ -3,12 +3,12 @@ Assignment 5 readme File
 ------------------------------------------------------------------------
 Student 1: What is your name?
 
-
+Tom Wang
 
 ------------------------------------------------------------------------
 Student 2: What is your name?
 
-
+Ty Lipscomb
 
 ------------------------------------------------------------------------
 Student 1: What authorized sources of information did you use to
@@ -17,7 +17,7 @@ information given in the "Policies" web page (also available on armlab
 in the file ~cos217/AuthorizedSourcesList ) to this section of the
 readme file, and edit it as appropriate.
 
-
+lectures, precepts, website, textbooks
 
 ------------------------------------------------------------------------
 Student 2: What authorized sources of information did you use to
@@ -26,7 +26,7 @@ information given in the "Policies" web page (also available on armlab
 in the file ~cos217/AuthorizedSourcesList ) to this section of the
 readme file, and edit it as appropriate.
 
-
+lectures, precepts, website, textbooks
 
 ------------------------------------------------------------------------
 Student 1: What unauthorized sources of information did you use to
@@ -40,7 +40,7 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
+None
 
 ------------------------------------------------------------------------
 Student 2: What unauthorized sources of information did you use to
@@ -54,7 +54,7 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
+None
 
 ------------------------------------------------------------------------
 Student 1: In fulfillment of the requirement from section 2.4.3 of the
@@ -64,7 +64,7 @@ guide, enter your name in the space below the following affirmation:
 This paper represents my own work in accordance with University
 regulations.
 
-
+Tom Wang /s/
 
 ------------------------------------------------------------------------
 Student 2: In fulfillment of the requirement from section 2.4.3 of the
@@ -74,7 +74,7 @@ guide, enter your name in the space below the following affirmation:
 This paper represents my own work in accordance with University
 regulations.
 
-
+Ty Lipscomb /s/
 
 ------------------------------------------------------------------------
 In fulfillment of the requirement from section 2.4.6 of the Academic
@@ -82,19 +82,23 @@ Regulations in Princeton's Rights, Rules, Responsibilities guide,
 and the COS 217 Generative AI policy, disclose and describe how you
 used AI in completing this assignment:
 
-
+I used chatGPT to help gneerate test files for 1b. I felt this was a bit tedious
+and AI helped speed up the process while explaining what exactly it was stress testing. It was
+also very useful to have ai explain what everything in assembly was doing and help debug my 
+errors as they came.
 
 ------------------------------------------------------------------------
 Student 1: What is your assessment of the assignment? Was it helpful?
 Was it fun?
 
-
+i thought it was helpful and i learned a lot about how assembly works. 
 
 ------------------------------------------------------------------------
 Student 2: What is your assessment of the assignment? Was it helpful?
 Was it fun?
 
-
+The assignment was good to engrain the concepts of assembly and how to use them. Makes a lot of sense 
+once you start to memorize the functions and how to use them.
 
 ------------------------------------------------------------------------
 (optional) What information can you provide about your submission that
@@ -108,29 +112,31 @@ What is your mywc program test plan?
 
 Boundary tests:
 
-mywc003.txt: This file contains only whitespace (spaces, tabs, and newlines), and so it checks the boundary case where there are characters and lines but zero words.
+mywc001.txt: This file has a normal line of words separated by spaces. It checks that the program can count a simple input correctly.
 
-mywc004.txt: This file contains one word and no trailing newline, and so it checks the boundary case where EOF happens while still inside a word.
+mywc002.txt: This file has words on multiple lines, but the last line does not end with a newline. It checks that the program does not overcount lines at EOF.
 
-mywc002.txt: This file has a final line that does not end with '\n', and so it checks the boundary between line counting and character counting at end-of-file.
+mywc003.txt: This file has only whitespace characters: spaces, tabs, and newlines. It checks that the program counts characters and lines, but counts zero words.
+
+mywc004.txt: This file has one word and no trailing newline. It checks that the program still counts the word when EOF happens immediately after it.
 
 Statement tests:
 
-mywc003.txt: This file contains only whitespace, and so causes the computer to execute lines 30-36, 42, 48-50, and 55-56 of the given mywc.c.
+mywc001.txt: This file tests the normal word-counting path. It executes the main loop on lines 30-50, character counting on line 32, non-whitespace handling on lines 42-46, word entry on line 45, whitespace handling on lines 34-40, word counting on line 38, and final printing on lines 55-56.
 
-mywc001.txt: This file contains words separated by different amounts of spaces, and so causes the computer to execute lines 30-40, 42-50, and 55-56 of the given mywc.c.
+mywc002.txt: This file tests words across lines. It executes the main loop on lines 30-50, character counting on line 32, word handling on lines 42-46, newline checking on line 48, line counting on line 49, the final word check on lines 52-53, and final printing on lines 55-56.
 
-mywc004.txt: This file contains one non-whitespace token with no trailing newline, and so causes the computer to execute lines 30-33, 34, 42-46, 52-53, and 55-56 of the given mywc.c.
+mywc003.txt: This file tests the whitespace-only case. It executes the main loop on lines 30-50, character counting on line 32, whitespace handling on lines 34-40, newline checking on line 48, line counting on line 49, and final printing on lines 55-56. It does not enter the non-whitespace word path.
 
-mywc002.txt: This file contains words across two lines where the second line has no newline terminator, and so causes the computer to execute lines 30-50, 52-53, and 55-56 of the given mywc.c.
+mywc004.txt: This file tests a single word with no newline. It executes the main loop on lines 30-50, character counting on line 32, non-whitespace handling on lines 42-46, word entry on line 45, the final word check on lines 52-53, and final printing on lines 55-56.
 
-mywc005.txt: This file contains punctuation with mixed whitespace separators (including tabs), and so causes the computer to execute lines 30-50 and 55-56 of the given mywc.c while confirming punctuation is treated as part of words.
+mywc005.txt: This file has punctuation and mixed whitespace, including tabs. It executes both the whitespace path on lines 34-40 and the non-whitespace path on lines 42-46. It also checks that punctuation is counted as part of a word, since punctuation is not whitespace.
 
 Stress tests:
 
-mywc006.txt: This file contains very long words/lines, and so stress tests repeated character counting and memory-safe iteration over long input lines.
+mywc006.txt: This file has very long words and/or long lines. It stress tests the loop on lines 30-50 and makes sure character counting on line 32 still works for a large input.
 
-mywc007.txt: This file contains many repeated lines with many words per line, and so stress tests loop behavior over larger total input size and frequent word transitions.
+mywc007.txt: This file has many repeated lines with many words. It stress tests repeated word transitions, newline counting on lines 48-49, and final output on lines 55-56.
 
 ------------------------------------------------------------------------
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,
@@ -140,11 +146,11 @@ Part 2a:  13.087087 seconds
 
 Part 2b:  5.187187 seconds
 
-Part 2d:  _____ seconds
+Part 2d:  6.211082 seconds
 
-Part 2e:  _____ seconds
+Part 2e:  5.336946 seconds
 
-Part 2f:  _____ seconds
+Part 2f:  0.796137 seconds
 
 
 
