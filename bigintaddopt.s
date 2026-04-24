@@ -108,7 +108,7 @@ endif2:
    ldr x1, [x1, LINDEX, lsl 3]
    add ULSUM, ULSUM, x1
 
-   cmp OADDEND2, x1
+   cmp ULSUM, x1
    bhs endif3
    mov ULCARRY, 1
 
@@ -129,6 +129,8 @@ endloop1:
    cmp LSUM_LENGTH, MAX_DIGITS
 	bne endif5
    mov x0, FALSE
+
+	b finish
 
 endif5:
    /* oSum->aulDigits[lSumLength] = 1; */
