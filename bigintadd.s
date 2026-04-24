@@ -64,7 +64,7 @@ larger_endif:
 /*--------------------------------------------------------------------*/
 /* Assign the sum of oAddend1 and oAddend2 to oSum.  oSum should be
    distinct from oAddend1 and oAddend2.  Return 0 (FALSE) if an
-   overflow occurred, and 1 (TRUE) otherwise. */
+   overflow occurred, and 1 (TRUE) otherwise. 
 
 ; int BigInt_add(BigInt_T oAddend1, BigInt_T oAddend2, BigInt_T oSum)
 ; {
@@ -97,6 +97,7 @@ larger_endif:
 
    ;    oSum->aulDigits[lIndex] = ulSum;
    ; }
+*/
 
 .global BigInt_add
 BigInt_add:
@@ -219,16 +220,3 @@ add_write_length:
     ldr x30, [sp, ADD_X30]
     add sp, sp, ADD_FRAME
     ret
-
-/*--------------------------------------------------------------------*/
-/* Flattened C tail (reference; asserts omitted in translation):       */
-/*   if (ulCarry == 1)                                                */
-/*   {                                                                */
-/*      if (lSumLength == MAX_DIGITS)                                 */
-/*         return FALSE;                                              */
-/*      oSum->aulDigits[lSumLength] = 1;                              */
-/*      lSumLength++;                                                 */
-/*   }                                                                */
-/*   oSum->lLength = lSumLength;                                      */
-/*   return TRUE;                                                     */
-/*--------------------------------------------------------------------*/
